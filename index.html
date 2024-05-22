@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otra para ti</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 3em;
+            margin-top: 20px;
+        }
+        
+        form {
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+            color: #000;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #ff4b3e;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .message {
+            margin: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ffb6c1;
+            border-radius: 10px;
+            color: #000;
+        }
+        
+        .message img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>4 Meses</h1>
+    <form id="date-form">
+        <label for="date">Ingresa la fecha (dd-mm-yyyy): </label>
+        <input type="text" id="date" name="date" placeholder="09-11-2008" required>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <form id="name-form" class="hidden">
+        <label for="name">Ingresa tu nombre(Solo uno de tus tres nombres por favor): </label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <div id="message" class="hidden message">
+        <img id="love-image" src="" alt="Imagen de amor">
+        <p>Y como llegamos aquí, ya son 4 meses contigo. Puede que sea el último, no lo sé, pero quiero intentar disfrutar al máximo este tiempo que me quede contigo. Hoy ya me parece una tontería ocultar lo que siento por ti. Creo que si esto va a acabar,
+            mejor ya ser lo que quise siempre ser contigo, valga la redundancia, una pareja, no tener miedo a que si hago algo acabe, no lo sé, dejar fluir. Puede que el próximo mes ya no te haga nada por un mes más. Tengo miedo a eso. Te amo tanto. Pero
+            en fin, felices 4 meses y espero que te esté gustando esta loca relación para que así quieras seguir conmigo y no me dejes porque te necesito. No sé si tú lo hagas, bueno, mejor no meterme, son tus emociones. Si gustas, pues me lo compartirás
+            alguna vez. Sin más que decir, te amo, siempre redundando yo.</p>
+    </div>
+
+    <script>
+        document.getElementById('date-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const date = document.getElementById('date').value;
+            if (date === '22-01-2024') {
+                document.getElementById('name-form').classList.remove('hidden');
+            } else {
+                alert('Fecha incorrecta. Intenta de nuevo.');
+            }
+        });
+
+        document.getElementById('name-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value.toLowerCase();
+            const validNames = ['dannae', 'ayelen', 'scarlet'];
+            const images = {
+                'dannae': 'dannae.jpg',
+                'ayelen': 'ayelen.jpg',
+                'scarlet': 'scarlet.jpg'
+            };
+            if (validNames.includes(name)) {
+                document.getElementById('love-image').src = images[name];
+                document.getElementById('message').classList.remove('hidden');
+                setTimeout(function() {
+                    alert('Señorita ' + name.charAt(0).toUpperCase() + name.slice(1) + ' debe responderle algo a su enamorado');
+                }, 10000); // Simula el tiempo de lectura de la carta
+            } else {
+                alert('Nombre incorrecto. Intenta de nuevo.');
+            }
+        });
+    </script>
+</body>
+
+</html>
